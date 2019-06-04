@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 
 namespace Collections
@@ -16,19 +17,20 @@ namespace Collections
 
         }
 
-        public Country[] ReadFirstNCountries(int nCountries)
+        public List<Country> ReadAllCountres()
         {
-            
+            List<Country> countries = new List<Country>();
 
-            Country[] countries = new Country[nCountries];
+          
             using (StreamReader sr = new StreamReader(CvsFilePath))
             {
                 sr.ReadLine();
 
-                    for (int i = 0; i < nCountries; i++)
+                string csvLine;
+
+                while ((csvLine=sr.ReadLine())!=null)
                 {
-                    string csvLine = sr.ReadLine();
-                    countries[i] = ReadfromCsvLine(csvLine);
+                    countries.Add(csvLine);
                 }
             }
                 return countries;
