@@ -21,7 +21,17 @@ namespace Collections
 
 
 
-            string filePath = @"C:\Users\jhasan\source\repos\Collections\Book2.csv";
+            string filePath = @"C:\Users\jhasan\source\repos\Collections\Book3.csv";
+
+            CvsReader reader = new CvsReader(filePath);
+
+
+            Country[] countries = reader.ReadFirstNCountries(4);
+
+            foreach (Country country in countries)
+            {
+                Console.WriteLine(country);
+            }
 
 
 
