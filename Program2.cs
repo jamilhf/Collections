@@ -12,14 +12,19 @@ namespace Collections
 
             CvsReader reader = new CvsReader(filePath);
 
+            List<Country> countries = reader.ReadAllCountres();
+            Country lilliput = new Country("Lilliput", "LIL", "Somewhere", 20000);
+            int lilliputIndex=countries.FindIndex(x=>x.Population<100000);
+            countries.Insert(lilliputIndex, lilliput);
+            countries.RemoveAt(lilliputIndex);
 
-            List<Country> countries = new List<Country>();
+            
 
-            foreach (var item in collection)
+            foreach (Country item in countries)
             {
-
+                Console.WriteLine(item.Name);
             }
-
+            Console.WriteLine(countries.Count);
 
         }
     }
